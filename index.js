@@ -50,6 +50,61 @@ const initDb = async () => {
 
 initDb();
 
+// Root endpoint with colorful notes
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>AWS Demo</title>
+        <style>
+          body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1e1e1e;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          }
+          .container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            background: #2d2d2d;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+          }
+          h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #9b51e0, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+          }
+          @keyframes shine {
+            to {
+              background-position: 200% center;
+            }
+          }
+          p {
+            color: #a0a0a0;
+            font-size: 1.2rem;
+            margin-top: 20px;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>AWS demo is in live like that 🚀</h1>
+          <p>Welcome to the colorful notes!</p>
+        </div>
+      </body>
+    </html>
+  `);
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
