@@ -13,16 +13,9 @@ jobs:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.2.0
         with:
-          host: ${{ 13.235.141.32 }}
-          username: ${{ ubuntu }}
-          key: ${{ -----BEGIN OPENSSH PRIVATE KEY-----
-b3BlbnNzaC1rZXktdjEAAAAACmFlczI1Ni1jdHIAAAAGYmNyeXB0AAAAGAAAABDajm+0xs
-ngsN9oPAOstjNRAAAAGAAAAAEAAAAzAAAAC3NzaC1lZDI1NTE5AAAAIK4bSVAzL8KA86XV
-u/jGly078/Oz7AOHJ/miuhPGJ2GjAAAAoC1jIrrtPVJPkbCJVnPmGHr3E0lWPs5SAPnVCi
-mIec0OiwUlWCRKBkVmYoJEF8jiwM/hAlu7l8UnItTwzihM6SmFO7q7w67Fxp6daazwxPWz
-fBL5d5q/EIBD5N3bWDQkszRkMzP4fVnFeV0eJsxcbOgx8w+XYoOdQXYYy7J7295I1Q/oQo
-FFf+YMRlW9bAfO3dSnd1F5KCBPxHkMytk0UIo=
------END OPENSSH PRIVATE KEY----- }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~/aws-demo
             git pull origin main
